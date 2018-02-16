@@ -1,0 +1,59 @@
+<h2>
+  User screen. Available for all authenticated users
+</h2>
+
+<p>Here is the data received from SpringBoot API for all authenticated users</p>
+
+<!--<pre>{{accounts | async | json}}</pre>-->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>account</th>
+      <th>iban</th>
+      <th>bank</th>
+      <th>bic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bank_account of accounts">
+      <td>{{bank_account.id}}</td>
+      <td>{{bank_account.account}}</td>
+      <td>{{bank_account.iban}}</td>
+      <td>{{bank_account.bank}}</td>
+      <td>{{bank_account.bic}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="form-wrapper">
+  <form name="form" (ngSubmit)="f.form.valid && addBankAccount(f)" #f="ngForm" novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !account.valid }">
+      <input type="number" class="form-control" name="account" [(ngModel)]="model.account" #account="ngModel"
+             required placeholder="Account"/>
+      <div *ngIf="f.submitted && !account.valid" class="help-block">Account is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !iban.valid }">
+      <input type="text" class="form-control" name="iban" [(ngModel)]="model.iban" #iban="ngModel"
+             required placeholder="Iban"/>
+      <div *ngIf="f.submitted && !iban.valid" class="help-block">Iban is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bank.valid }">
+      <input type="text" class="form-control" name="bank" [(ngModel)]="model.bank" #bank="ngModel"
+             required placeholder="Bank"/>
+      <div *ngIf="f.submitted && !bank.valid" class="help-block">Bank is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bic.valid }">
+      <input type="number" class="form-control" name="bic" [(ngModel)]="model.bic" #bic="ngModel"
+             required placeholder="Bic"/>
+      <div *ngIf="f.submitted && !bic.valid" class="help-block">Bic is required</div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Add</button>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </form>
+</div>
+
+
