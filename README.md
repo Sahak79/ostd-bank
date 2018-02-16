@@ -19,7 +19,7 @@ OSTD-BANK uses a number of open source projects to work properly:
 * [AngularJS] - HTML enhanced for web apps!
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [node.js] - evented I/O for the backend
-* [Spring Boot] - Create stand-alone Spring applications, embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
+* [Spring Boot] - Create stand-alone Spring applications, embed Tomcat
 * [Spring RESTful] - Spring RESTful Web Service
 * [H2 Database Engine] - Very fast, open source, JDBC API, in-memory databases, small footprint: around 1.5 MB jar file size
 * [JWT] - Authentication using JWT Token
