@@ -20,6 +20,7 @@ OSTD-BANK uses a number of open source projects to work properly:
 * [node.js] - evented I/O for the backend
 * [Spring Boot] - Create stand-alone Spring applications, embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
 * [H2 Database Engine] - Very fast, open source, JDBC API, in-memory databases, small footprint: around 1.5 MB jar file size
+* [JWT] - Authentication using JWT Token
 
 
 ### Installation
@@ -52,5 +53,6 @@ Navigate to your server address in your preferred browser.
    [AngularJS]: <http://angularjs.org>
    [H2 Database Engine]: <http://www.h2database.com>
    [Spring Boot]: <https://projects.spring.io/spring-boot/>
+   [JWT]:  <https://jwt.io/>
 
 
