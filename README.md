@@ -9,6 +9,7 @@ OSTD-BANK is a test project, AngularJS with Spring boot.
 
 # Features!
 
+  - Login with credentials provided in login page (for testing reasons ;) )
   - Add some more accounts with form below bank accounts list
 
 ### Tech
@@ -21,7 +22,6 @@ OSTD-BANK uses a number of open source projects to work properly:
 * [Spring Boot] - Create stand-alone Spring applications, embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
 * [H2 Database Engine] - Very fast, open source, JDBC API, in-memory databases, small footprint: around 1.5 MB jar file size
 * [JWT] - Authentication using JWT Token
-
 
 ### Installation
 
