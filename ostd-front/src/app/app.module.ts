@@ -18,6 +18,7 @@ import {AuthGuard} from './guards/auth-guard.service';
 import {AdminAuthGuard} from './guards/admin-auth-guard.service';
 import {TOKEN_NAME} from './services/auth.constant';
 import {AppDataService} from './services/app-data.service';
+import {Modal} from "./modal/custom.modal.component";
 
 export function authHttpServiceFactory(http: Http) {
   return new AuthHttp(new AuthConfig({
@@ -36,7 +37,8 @@ export function authHttpServiceFactory(http: Http) {
     HomeComponent,
     AdminComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    Modal
   ],
   imports: [
     BrowserModule,

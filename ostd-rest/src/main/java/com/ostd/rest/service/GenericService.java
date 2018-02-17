@@ -9,6 +9,10 @@ public interface GenericService {
 
     BankAccount addBankAccount(BankAccount city);
 
+    BankAccount editBankAccount(BankAccount bankAccount);
+
+    void deleteBankAccount(Long accountId);
+
     User findByUsername(String username);
 
     List<User> findAllUsers();

@@ -14,15 +14,26 @@
       <th>iban</th>
       <th>bank</th>
       <th>bic</th>
+      <th colspan="2" >action</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let bank_account of accounts">
+    <tr *ngFor="let bank_account of accounts" >
       <td>{{bank_account.id}}</td>
       <td>{{bank_account.account}}</td>
       <td>{{bank_account.iban}}</td>
       <td>{{bank_account.bank}}</td>
       <td>{{bank_account.bic}}</td>
+      <td>
+        <a href="javascript:void(0)" (click)="openEditModal(editBankAccountModal, bank_account)">
+          edit
+        </a>
+      </td>
+      <td>
+        <a href="javascript:void(0)" (click)="deleteBankAccount(bank_account)">
+          delete
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -56,4 +67,33 @@
   </form>
 </div>
 
+<modal #editBankAccountModal id="deleteUser" [show-modal]="isModalOpen" [title]="'Edit bank account'" >
+  <form name="form" (ngSubmit)="fe.form.valid && editBankAccount(editBankAccountModal)" #fe="ngForm" novalidate>
+    <div class="form-group" [ngClass]="{ 'has-error': fe.submitted && !account.valid }">
+      <input type="number" class="form-control" name="account" [(ngModel)]="edit_model.account" #account="ngModel"
+             required placeholder="Account"/>
+      <div *ngIf="fe.submitted && !account.valid" class="help-block">Account is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': fe.submitted && !iban.valid }">
+      <input type="text" class="form-control" name="iban" [(ngModel)]="edit_model.iban" #iban="ngModel"
+             required placeholder="Iban"/>
+      <div *ngIf="fe.submitted && !iban.valid" class="help-block">Iban is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': fe.submitted && !bank.valid }">
+      <input type="text" class="form-control" name="bank" [(ngModel)]="edit_model.bank" #bank="ngModel"
+             required placeholder="Bank"/>
+      <div *ngIf="fe.submitted && !bank.valid" class="help-block">Bank is required</div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': fe.submitted && !bic.valid }">
+      <input type="number" class="form-control" name="bic" [(ngModel)]="edit_model.bic" #bic="ngModel"
+             required placeholder="Bic"/>
+      <div *ngIf="fe.submitted && !bic.valid" class="help-block">Bic is required</div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">Update</button>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <div *ngIf="success" class="alert alert-success">{{success}}</div>
+  </form>
+</modal>
 

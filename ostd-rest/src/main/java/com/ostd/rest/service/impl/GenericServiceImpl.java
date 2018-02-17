@@ -25,17 +25,26 @@ public class GenericServiceImpl implements GenericService {
 
     @Override
     public BankAccount addBankAccount(BankAccount bankAccount) {
-
-        LOGGER.info(String.format("addBankAccount :: %s", bankAccount));
-
+        LOGGER.info("addBankAccount :: {}", bankAccount);
         return bankAccountRepository.save(bankAccount);
     }
 
     @Override
+    public BankAccount editBankAccount(BankAccount bankAccount) {
+        LOGGER.info("addBankAccount :: {}", bankAccount);
+        return bankAccountRepository.save(bankAccount);
+
+    }
+
+    @Override
+    public void deleteBankAccount(Long accountId) {
+        LOGGER.info("addBankAccount :: {}", accountId);
+        bankAccountRepository.delete(accountId);
+    }
+
+    @Override
     public User findByUsername(String username) {
-
-        LOGGER.info(String.format("findByUsername :: %s", username));
-
+        LOGGER.info("findByUsername :: {}", username);
         return userRepository.findByUsername(username);
     }
 
@@ -43,15 +52,12 @@ public class GenericServiceImpl implements GenericService {
     public List<User> findAllUsers() {
 
         LOGGER.info("findAllUsers");
-
         return (List<User>)userRepository.findAll();
     }
 
     @Override
     public List<BankAccount> findAllBankAccounts() {
-
         LOGGER.info("findAllBankAccounts");
-
         return (List<BankAccount>) bankAccountRepository.findAll();
     }
 }

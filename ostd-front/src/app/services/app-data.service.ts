@@ -12,6 +12,14 @@ export class AppDataService {
     return this.http.post('/springjwt/accounts', account).map(res => res.json());
   }
 
+  editBankAccount(account: BankAccount) {
+    return this.http.put('/springjwt/accounts', account).map(res => res.json());
+  }
+
+  deleteBankAccount(account: BankAccount) {
+    return this.http.delete('/springjwt/accounts/' + account.id).map(res => res.json());
+  }
+
   getAccounts() {
     this.data = [];
     this.http.get('/springjwt/accounts').subscribe(res => {

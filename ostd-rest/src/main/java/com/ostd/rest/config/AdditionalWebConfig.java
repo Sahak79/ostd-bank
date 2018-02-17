@@ -27,11 +27,4 @@ public class AdditionalWebConfig {
         return bean;
     }
 
-   /* @Bean
-    public EmbeddedServletContainerCustomizer containerCustomizer() {
-        return container -> {
-            container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/"));
-        };
-    }*/
-
 }

@@ -25,31 +25,42 @@ public class ResourceController {
     @RequestMapping(value ="/accounts", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public List<BankAccount> getAccounts() {
-
         LOGGER.info("getAccounts");
-
         return userService.findAllBankAccounts();
     }
 
     @RequestMapping(value ="/users", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('ADMIN_USER')")
     public List<User> getUsers() {
-
         LOGGER.info("getUsers");
-
         return userService.findAllUsers();
     }
 
     @RequestMapping(value ="/accounts", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
     public BankAccount saveBankAccount(@RequestBody BankAccount bankAccount){
-
-        LOGGER.info(String.format("saveBankAccount :: %s", bankAccount));
-
+        LOGGER.info("saveBankAccount :: {}", bankAccount);
         if (!bankAccount.validate()) {
             throw new InvalidBankAccountException("invalid data for bank account");
         }
-
         return userService.addBankAccount(bankAccount);
+    }
+
+    @PutMapping(value ="/accounts")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public BankAccount editBankAccount(@RequestBody BankAccount bankAccount){
+        LOGGER.info("editBankAccount :: {}", bankAccount);
+        if (!bankAccount.validate()) {
+            throw new InvalidBankAccountException("invalid data for bank account");
+        }
+        return userService.editBankAccount(bankAccount);
+    }
+
+    @DeleteMapping(value ="/accounts/{id}")
+    @PreAuthorize("hasAuthority('ADMIN_USER') or hasAuthority('STANDARD_USER')")
+    public boolean deleteBankAccount(@PathVariable Long id){
+        LOGGER.info("deleteBankAccount :: {}", id);
+        userService.deleteBankAccount(id);
+        return true;
     }
 }
