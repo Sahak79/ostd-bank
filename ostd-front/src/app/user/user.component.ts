@@ -17,12 +17,21 @@ export class UserComponent implements OnInit {
   loading = false;
   error = '';
   success = '';
+  number_pattern : RegExp = /^[0-9]+$/;
 
   constructor(private appDataService: AppDataService) {
   }
 
   ngOnInit() {
     this.accounts = this.appDataService.getAccounts();
+  }
+
+  accountValidation() : boolean {
+    return this.number_pattern.test(this.model.account.toString());
+  }
+
+  bicValidation() : boolean {
+    return this.number_pattern.test(this.model.bic.toString());
   }
 
   addBankAccount(form: NgForm) {

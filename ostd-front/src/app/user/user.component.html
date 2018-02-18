@@ -41,9 +41,10 @@
 <div class="form-wrapper">
   <form name="form" (ngSubmit)="f.form.valid && addBankAccount(f)" #f="ngForm" novalidate>
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !account.valid }">
-      <input type="number" class="form-control" name="account" [(ngModel)]="model.account" #account="ngModel"
+      <input type="text" (keyup)="isAccountValid=!accountValidation()"  pattern="^[0-9]+$" class="form-control" name="account" [(ngModel)]="model.account" #account="ngModel"
              required placeholder="Account"/>
       <div *ngIf="f.submitted && !account.valid" class="help-block">Account is required</div>
+      <div #isAccountValid *ngIf="isAccountValid" class="help-block">Only number accepted</div>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !iban.valid }">
       <input type="text" class="form-control" name="iban" [(ngModel)]="model.iban" #iban="ngModel"
@@ -56,9 +57,10 @@
       <div *ngIf="f.submitted && !bank.valid" class="help-block">Bank is required</div>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !bic.valid }">
-      <input type="number" class="form-control" name="bic" [(ngModel)]="model.bic" #bic="ngModel"
+      <input type="text" (keyup)="isBicValid=!bicValidation()" pattern="^[0-9]+$" class="form-control" name="bic" [(ngModel)]="model.bic" #bic="ngModel"
              required placeholder="Bic"/>
       <div *ngIf="f.submitted && !bic.valid" class="help-block">Bic is required</div>
+      <div #isBicValid *ngIf="isBicValid" class="help-block">Only number accepted</div>
     </div>
     <div class="form-group">
       <button [disabled]="loading" class="btn btn-primary">Add</button>
