@@ -2,6 +2,10 @@ package com.ostd.rest.domain;
 
 import javax.persistence.*;
 
+/**
+ * Bank account
+ */
+
 @Entity
 @Table(name = "bank_account")
 public class BankAccount {
