@@ -3,7 +3,7 @@ package com.ostd.rest.domain;
 import javax.persistence.*;
 
 /**
- * Bank account
+ * Bank account title
  */
 
 @Entity
